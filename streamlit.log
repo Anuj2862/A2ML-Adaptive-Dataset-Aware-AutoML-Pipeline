@@ -1,0 +1,57 @@
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8502
+  Network URL: http://10.34.145.176:8502
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  0%|          | 0/50 [00:00<?, ?it/s]  8%|▊         | 4/50 [00:00<00:01, 38.84it/s] 16%|█▌        | 8/50 [00:00<00:01, 38.87it/s] 26%|██▌       | 13/50 [00:00<00:00, 40.20it/s] 36%|███▌      | 18/50 [00:00<00:00, 43.16it/s] 46%|████▌     | 23/50 [00:00<00:00, 45.02it/s] 56%|█████▌    | 28/50 [00:00<00:00, 46.45it/s] 68%|██████▊   | 34/50 [00:00<00:00, 48.07it/s] 80%|████████  | 40/50 [00:00<00:00, 51.02it/s] 92%|█████████▏| 46/50 [00:00<00:00, 52.66it/s]100%|██████████| 50/50 [00:01<00:00, 48.40it/s]
+2026-02-28 02:54:37.447 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 02:54:37.546 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 02:54:37.560 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 02:54:37.572 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+Warning: Grid search failed for XGBoost Classifier, ('DataFrame' object has no attribute 'dtype'). Using default params.
+[14:08:34] WARNING: /Users/runner/work/xgboost/xgboost/src/learner.cc:782: 
+Parameters: { "use_label_encoder" } are not used.
+
+  0%|          | 0/30 [00:00<?, ?it/s]100%|██████████| 30/30 [00:00<00:00, 958.59it/s]
+2026-02-28 14:08:36.595 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 14:08:36.607 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 14:08:36.616 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-02-28 14:08:36.630 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.

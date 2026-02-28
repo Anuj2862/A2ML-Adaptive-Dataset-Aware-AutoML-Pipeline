@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A²ML — Final Project Report</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.75
+        }
+
+        /* ── COVER ── */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+            padding: 60px 40px;
+            page-break-after: always
+        }
+
+        .badge {
+            background: rgba(168, 85, 247, .15);
+            border: 1px solid rgba(168, 85, 247, .35);
+            border-radius: 999px;
+            padding: 6px 22px;
+            font-size: .75rem;
+            font-weight: 600;
+            color: #c4b5fd;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px
+        }
+
+        .cover h1 {
+            font-size: clamp(2.5rem, 8vw, 4.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 10px
+        }
+
+        .cover .full-title {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 720px;
+            margin: 0 auto 40px;
+            font-style: italic
+        }
+
+        .meta-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 680px;
+            width: 100%;
+            margin-bottom: 40px
+        }
+
+        .meta-box {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            padding: 18px 14px
+        }
+
+        .meta-box .lbl {
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            margin-bottom: 5px
+        }
+
+        .meta-box .val {
+            font-size: .95rem;
+            font-weight: 600;
+            color: #e2e8f0
+        }
+
+        .cover .foot {
+            font-size: .82rem;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            max-width: 580px
+        }
+
+        /* ── LAYOUT ── */
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 60px 40px
+        }
+
+        /* ── SECTION HEADS ── */
+        .sec {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 56px 0 24px
+        }
+
+        .sec-num {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .82rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0
+        }
+
+        .sec h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #f1f5f9
+        }
+
+        /* ── CARDS ── */
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 26px;
+            margin-bottom: 18px
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #c4b5fd;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .card p,
+        .card li {
+            color: #94a3b8;
+            font-size: .93rem
+        }
+
+        .card ul {
+            padding-left: 20px
+        }
+
+        .card ul li {
+            margin-bottom: 5px
+        }
+
+        /* ── HIGHLIGHT / CALLOUT ── */
+        .hl {
+            background: linear-gradient(135deg, rgba(99, 102, 241, .1), rgba(168, 85, 247, .1));
+            border: 1px solid rgba(168, 85, 247, .28);
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 22px
+        }
+
+        .hl p {
+            color: #c4b5fd;
+            font-size: .95rem
+        }
+
+        .teal-box {
+            background: rgba(20, 184, 166, .07);
+            border: 1px solid rgba(20, 184, 166, .22);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 14px
+        }
+
+        .teal-box h4 {
+            color: #5eead4;
+            font-size: .97rem;
+            font-weight: 700;
+            margin-bottom: 7px
+        }
+
+        .teal-box p {
+            color: #94a3b8;
+            font-size: .92rem
+        }
+
+        /* ── TABLES ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px
+        }
+
+        th {
+            background: #1e293b;
+            color: #94a3b8;
+            font-size: .73rem;
+            text-transform: uppercase;
+            letter-spacing: .9px;
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid #334155
+        }
+
+        td {
+            padding: 13px 14px;
+            border-bottom: 1px solid #1e293b;
+            color: #cbd5e1;
+            font-size: .88rem;
+            vertical-align: top
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(255, 255, 255, .02)
+        }
+
+        /* ── CODE / FORMULA ── */
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .82rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 18px 20px;
+            color: #a5b4fc;
+            line-height: 2;
+            margin: 14px 0;
+            overflow-x: auto
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, .18);
+            color: #a5b4fc;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: .73rem;
+            font-family: 'JetBrains Mono', monospace
+        }
+
+        /* ── GRIDS ── */
+        .g2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .g3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px
+        }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 26px
+        }
+
+        .stat {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 18px 12px;
+            text-align: center
+        }
+
+        .stat .n {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .stat .l {
+            color: #64748b;
+            font-size: .75rem;
+            margin-top: 3px
+        }
+
+        /* ── PIPELINE FLOW ── */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0;
+            margin: 18px 0
+        }
+
+        .fstep {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 7px;
+            padding: 8px 14px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: #c4b5fd;
+            white-space: nowrap
+        }
+
+        .farrow {
+            color: #475569;
+            font-size: 1.1rem;
+            padding: 0 5px
+        }
+
+        /* ── PILL ── */
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(99, 102, 241, .13);
+            border: 1px solid rgba(99, 102, 241, .28);
+            border-radius: 999px;
+            padding: 4px 13px;
+            font-size: .8rem;
+            color: #a5b4fc;
+            margin: 3px 3px 3px 0;
+            font-weight: 500
+        }
+
+        /* ── SCOPE BOX ── */
+        .scope-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .scope-yes {
+            background: rgba(20, 184, 166, .07);
+            border: 1px solid rgba(20, 184, 166, .22);
+            border-radius: 12px;
+            padding: 20px 24px
+        }
+
+        .scope-no {
+            background: rgba(239, 68, 68, .06);
+            border: 1px solid rgba(239, 68, 68, .18);
+            border-radius: 12px;
+            padding: 20px 24px
+        }
+
+        .scope-yes h4 {
+            color: #5eead4;
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: 10px
+        }
+
+        .scope-no h4 {
+            color: #f87171;
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: 10px
+        }
+
+        .scope-yes li,
+        .scope-no li {
+            color: #94a3b8;
+            font-size: .88rem;
+            margin-bottom: 5px;
+            list-style: none;
+            padding-left: 4px
+        }
+
+        .scope-yes li::before {
+            content: "✅ "
+        }
+
+        .scope-no li::before {
+            content: "❌ "
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #334155;
+            font-size: .8rem;
+            border-top: 1px solid #1e293b;
+            margin-top: 56px
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            body {
+                background: #fff;
+                color: #111
+            }
+
+            .cover {
+                background: linear-gradient(135deg, #1e1b4b, #312e81);
+                page-break-after: always
+            }
+
+            .card,
+            .teal-box,
+            .hl,
+            .stat {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact
+            }
+
+            .page {
+                padding: 40px 28px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════ COVER ═══════════════ -->
+    <div class="cover">
+        <div class="badge">🎓 Final Project Report · February 2026</div>
+        <h1>A²ML System</h1>
+        <p class="full-title">
+            A dataset-aware AutoML research prototype that automatically constructs machine learning pipelines for
+            structured datasets using statistical dataset analysis, adaptive preprocessing policies, and memory-driven
+            model selection.
+        </p>
+
+        <div class="meta-row">
+            <div class="meta-box">
+                <div class="lbl">Domain</div>
+                <div class="val">Machine Learning / AutoML</div>
+            </div>
+            <div class="meta-box">
+                <div class="lbl">Tech Stack</div>
+                <div class="val">Python · scikit-learn · XGBoost · Streamlit</div>
+            </div>
+            <div class="meta-box">
+                <div class="lbl">Date</div>
+                <div class="val">February 2026</div>
+            </div>
+        </div>
+        <p class="foot">
+            An intelligent pipeline that automatically analyzes tabular datasets, selects preprocessing strategies,
+            trains multiple models, evaluates them, selects the best model, and provides explainable predictions —
+            with zero manual configuration.
+        </p>
+    </div>
+
+    <!-- ═══════════════ CONTENT ═══════════════ -->
+    <div class="page">
+
+        <!-- STATS -->
+        <div class="stats-row">
+            <div class="stat">
+                <div class="n">10</div>
+                <div class="l">Engine Modules</div>
+            </div>
+            <div class="stat">
+                <div class="n">13</div>
+                <div class="l">ML Models</div>
+            </div>
+            <div class="stat">
+                <div class="n">3</div>
+                <div class="l">Problem Types</div>
+            </div>
+            <div class="stat">
+                <div class="n">5</div>
+                <div class="l">Sample Datasets</div>
+            </div>
+            <div class="stat">
+                <div class="n">4</div>
+                <div class="l">Experiments</div>
+            </div>
+        </div>
+
+        <!-- 1. Problem Statement -->
+        <div class="sec">
+            <div class="sec-num">1</div>
+            <h2>Problem Statement</h2>
+        </div>
+        <div class="hl">
+            <p>Traditional ML workflows require manual preprocessing, model selection, and evaluation which demand
+                expertise and time. There is a need for an intelligent system that automatically constructs optimal ML
+                pipelines for structured datasets without requiring domain knowledge from the user. A²ML addresses this
+                by
+                bridging the gap between raw data and deployable models through a policy-driven autonomous engine.</p>
+        </div>
+
+        <!-- 2. Project Objective -->
+        <div class="sec">
+            <div class="sec-num">2</div>
+            <h2>Project Objective</h2>
+        </div>
+        <div class="card">
+            <h3>🎯 Objective</h3>
+            <p>Design and implement a dataset-aware autonomous ML pipeline that:</p>
+            <ul>
+                <li>Analyzes dataset characteristics automatically</li>
+                <li>Selects preprocessing strategy based on data properties</li>
+                <li>Performs intelligent feature engineering</li>
+                <li>Trains multiple ML models simultaneously</li>
+                <li>Selects the best model based on evaluation criteria</li>
+                <li>Explains predictions using SHAP and Partial Dependence Plots</li>
+                <li>Improves decision making using historical knowledge memory</li>
+            </ul>
+        </div>
+
+        <!-- 3. Scope -->
+        <div class="sec">
+            <div class="sec-num">3</div>
+            <h2>Scope Boundaries</h2>
+        </div>
+        <div class="scope-row">
+            <div class="scope-yes">
+                <h4>✅ Included in Scope</h4>
+                <ul>
+                    <li>Tabular structured datasets (CSV)</li>
+                    <li>Regression problems</li>
+                    <li>Classification problems</li>
+                    <li>Clustering tasks</li>
+                    <li>Dataset-aware preprocessing</li>
+                    <li>Model comparison and benchmarking</li>
+                    <li>Explainable AI (SHAP + PDP)</li>
+                    <li>Memory-based model recommendation</li>
+                </ul>
+            </div>
+            <div class="scope-no">
+                <h4>❌ Not Included</h4>
+                <ul>
+                    <li>Image processing / Computer Vision</li>
+                    <li>NLP / Text classification</li>
+                    <li>Deep learning pipelines</li>
+                    <li>Large-scale distributed training</li>
+                    <li>Production cloud deployment</li>
+                    <li>Reinforcement learning</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. Architecture -->
+        <div class="sec">
+            <div class="sec-num">4</div>
+            <h2>System Architecture</h2>
+        </div>
+        <div class="card">
+            <h3>🔄 Full Pipeline Flow</h3>
+            <div class="flow">
+                <div class="fstep">📁 CSV Input</div>
+                <div class="farrow">→</div>
+                <div class="fstep">🔍 Data Input Engine</div>
+                <div class="farrow">→</div>
+                <div class="fstep">📊 Dataset Analysis</div>
+                <div class="farrow">→</div>
+                <div class="fstep">🎯 Problem Detection</div>
+                <div class="farrow">→</div>
+                <div class="fstep">📐 Complexity Score</div>
+                <div class="farrow">→</div>
+                <div class="fstep">⚙️ Preprocessing</div>
+                <div class="farrow">→</div>
+                <div class="fstep">🔬 Feature Eng.</div>
+                <div class="farrow">→</div>
+                <div class="fstep">🤖 Model Training</div>
+                <div class="farrow">→</div>
+                <div class="fstep">⚡ Hyperopt</div>
+                <div class="farrow">→</div>
+                <div class="fstep">📈 Evaluation</div>
+                <div class="farrow">→</div>
+                <div class="fstep">🏆 Auto Selection</div>
+                <div class="farrow">→</div>
+                <div class="fstep">💡 XAI Engine</div>
+                <div class="farrow">→</div>
+                <div class="fstep">💾 Memory</div>
+                <div class="farrow">→</div>
+                <div class="fstep">📱 Dashboard</div>
+            </div>
+        </div>
+
+        <!-- 5. Module Specification -->
+        <div class="sec">
+            <div class="sec-num">5</div>
+            <h2>System Module Specification</h2>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>File</th>
+                    <th>Responsibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Data Input Engine</b></td>
+                    <td><span class="tag">data_input.py</span></td>
+                    <td>Loads CSV, detects column types, identifies target variable, applies problem type detection
+                        rules.</td>
+                </tr>
+                <tr>
+                    <td><b>Dataset Analysis Engine</b></td>
+                    <td><span class="tag">meta_learning.py</span></td>
+                    <td>Computes: number of samples, feature types, missing ratio, skewness, class imbalance, and
+                        complexity score.</td>
+                </tr>
+                <tr>
+                    <td><b>Adaptive Preprocessing</b></td>
+                    <td><span class="tag">preprocessing.py</span></td>
+                    <td>Decision-policy preprocessing: KNN imputation if missing &gt;20%, encoding for categoricals,
+                        normalization for skewed distributions.</td>
+                </tr>
+                <tr>
+                    <td><b>Feature Engineering</b></td>
+                    <td><span class="tag">feature_opt.py</span></td>
+                    <td>Strategy selection via dataset shape: polynomial interactions (≤10 features), PCA (features &gt;
+                        rows), or mutual information.</td>
+                </tr>
+                <tr>
+                    <td><b>Multi-Model Training</b></td>
+                    <td><span class="tag">model_training.py</span></td>
+                    <td>Instantiates 13 algorithms across regression, classification, and clustering. XGBoost loaded
+                        conditionally.</td>
+                </tr>
+                <tr>
+                    <td><b>Hyperparameter Optimization</b></td>
+                    <td><span class="tag">hyperparameter.py</span></td>
+                    <td>GridSearchCV with predefined grids per model. Falls back to default fit if no grid defined.</td>
+                </tr>
+                <tr>
+                    <td><b>Model Evaluation Engine</b></td>
+                    <td><span class="tag">evaluation.py</span></td>
+                    <td>Benchmarks all trained models. Auto-selects best using RMSE (regression), F1 (classification),
+                        or Silhouette (clustering).</td>
+                </tr>
+                <tr>
+                    <td><b>Explainable AI Engine</b></td>
+                    <td><span class="tag">explainability.py</span></td>
+                    <td>SHAP feature importance (TreeExplainer / LinearExplainer / KernelExplainer) + Partial Dependence
+                        Plots for top feature.</td>
+                </tr>
+                <tr>
+                    <td><b>Knowledge Memory System</b></td>
+                    <td><span class="tag">knowledge_memory.py</span></td>
+                    <td>Stores metadata vectors per run. Recommends models via Euclidean distance on [rows, features,
+                        missing ratio, complexity].</td>
+                </tr>
+                <tr>
+                    <td><b>Pipeline Orchestrator</b></td>
+                    <td><span class="tag">pipeline.py</span></td>
+                    <td>Chains all engines in correct sequence, manages data flow, returns structured results
+                        dictionary.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 6. Dataset Complexity Score -->
+        <div class="sec">
+            <div class="sec-num">6</div>
+            <h2>Dataset Complexity Score</h2>
+        </div>
+        <div class="card">
+            <h3>📐 Official Formula</h3>
+            <div class="code-box">
+                complexity = 0.4 × (num_features / num_samples)<br>
+                + 0.3 × (missing_ratio)<br>
+                + 0.3 × (skewness_score)
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Score Range</th>
+                        <th>Label</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt; 0.15</td>
+                        <td>Low</td>
+                        <td>Dataset is clean, well-sized, and normally distributed</td>
+                    </tr>
+                    <tr>
+                        <td>0.15 – 0.35</td>
+                        <td>Medium</td>
+                        <td>Moderate dimensionality or missing values present</td>
+                    </tr>
+                    <tr>
+                        <td>≥ 0.35</td>
+                        <td>High</td>
+                        <td>Highly dimensional, skewed, or heavily missing data</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:10px;font-size:.85rem;color:#64748b">
+                Skewness score is normalised to [0, 1] using cap at mean absolute skewness = 10.
+            </p>
+        </div>
+
+        <!-- 7. Problem Type Detection -->
+        <div class="sec">
+            <div class="sec-num">7</div>
+            <h2>Problem Type Detection Rules</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Condition</th>
+                    <th>Detected Problem Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>No target column provided</td>
+                    <td>🔵 Clustering</td>
+                </tr>
+                <tr>
+                    <td>Categorical (string) target</td>
+                    <td>🟠 Classification</td>
+                </tr>
+                <tr>
+                    <td>Numeric target with ≤ 20 unique values or &lt; 5% unique rate</td>
+                    <td>🟠 Classification</td>
+                </tr>
+                <tr>
+                    <td>Numeric target with many unique values</td>
+                    <td>🟢 Regression</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 8. Preprocessing Decision Policy -->
+        <div class="sec">
+            <div class="sec-num">8</div>
+            <h2>Adaptive Preprocessing & Theoretical Justification</h2>
+        </div>
+        <div class="g2">
+            <div class="teal-box">
+                <h4>🔧 Missing Value Imputation</h4>
+                <p><code>if missing_ratio > 20% → KNN Imputation</code><br>
+                    <code>else → Simple mean/mode imputation</code>
+                </p>
+                <p style="font-size:0.8rem; margin-top:8px; color:#64748b;"><em>Theoretical Basis:</em> KNN preserves
+                    local structure in high-missingness regimes, whereas mean imputation preserves global variance but
+                    distorts local density.</p>
+            </div>
+            <div class="teal-box">
+                <h4>🔤 Categorical Encoding</h4>
+                <p><code>if cardinality ≤ 10 → One-Hot Encoding</code><br>
+                    <code>else → Label Encoding</code>
+                </p>
+                <p style="font-size:0.8rem; margin-top:8px; color:#64748b;"><em>Theoretical Basis:</em> One-Hot avoids
+                    ordinal assumptions for low-cardinality features. Label encoding prevents dimensionality explosion
+                    for high-cardinality nominals.</p>
+            </div>
+            <div class="teal-box">
+                <h4>📏 Feature Scaling</h4>
+                <p><code>StandardScaler (Z-score normalization)</code><br>applied to all numeric features</p>
+                <p style="font-size:0.8rem; margin-top:8px; color:#64748b;"><em>Theoretical Basis:</em> Centering and
+                    scaling ensures gradients descend uniformly for optimization-based models (SVM, Ridge) and avoids
+                    distance dominance in KNN.</p>
+            </div>
+            <div class="teal-box">
+                <h4>🔬 Feature Engineering</h4>
+                <p><code>≤ 10 features → polynomial interactions</code><br>
+                    <code>features > rows → PCA</code><br>
+                    <code>else → mutual information selection</code>
+                </p>
+                <p style="font-size:0.8rem; margin-top:8px; color:#64748b;"><em>Theoretical Basis:</em> PCA prevents
+                    overfitting in p > n regimes; interactions capture non-linear feature couplings in low-dimensional
+                    spaces.</p>
+            </div>
+        </div>
+
+        <!-- 9. Models -->
+        <div class="sec">
+            <div class="sec-num">9</div>
+            <h2>Model Library</h2>
+        </div>
+        <div class="g3">
+            <div class="card">
+                <h3>📊 Regression (7 models)</h3>
+                <div>
+                    <span class="pill">Linear Regression</span>
+                    <span class="pill">Ridge</span>
+                    <span class="pill">Lasso</span>
+                    <span class="pill">SVR</span>
+                    <span class="pill">Decision Tree</span>
+                    <span class="pill">Random Forest</span>
+                    <span class="pill">XGBoost ⭐</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🏷️ Classification (6 models)</h3>
+                <div>
+                    <span class="pill">SVM</span>
+                    <span class="pill">KNN</span>
+                    <span class="pill">Decision Tree</span>
+                    <span class="pill">Random Forest</span>
+                    <span class="pill">Naive Bayes</span>
+                    <span class="pill">XGBoost ⭐</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🔵 Clustering (2 models)</h3>
+                <div>
+                    <span class="pill">K-Means</span>
+                    <span class="pill">DBSCAN</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Evaluation Metrics -->
+        <div class="sec">
+            <div class="sec-num">10</div>
+            <h2>Evaluation Metrics</h2>
+        </div>
+        <div class="g3">
+            <div class="card">
+                <h3>📉 Regression</h3>
+                <ul>
+                    <li>RMSE (Primary Selection)</li>
+                    <li>MAE</li>
+                    <li>R² Score</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>📊 Classification</h3>
+                <ul>
+                    <li>Accuracy</li>
+                    <li>Precision</li>
+                    <li>Recall</li>
+                    <li>F1-Score (Primary)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🔵 Clustering</h3>
+                <ul>
+                    <li>Silhouette Score (Primary)</li>
+                    <li>Cluster distributions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 11. Knowledge Memory -->
+        <div class="sec">
+            <div class="sec-num">11</div>
+            <h2>Knowledge Memory & Advanced Similarity Search</h2>
+        </div>
+        <div class="card">
+            <h3>🧠 Multi-Factor Similarity</h3>
+            <p>Similarity is no longer just on count, but on <b>informational distribution</b>. Metadata vector:</p>
+            <div class="code-box">meta_vector = [rows, features, missing_ratio, complexity, correlation, entropy]</div>
+            <p><b>Correlation:</b> Mean absolute Pearson correlation between numeric features and target.<br>
+                <b>Entropy:</b> Mean Shannon Entropy of categorical features (proxy for information richness).<br>
+                The system uses <b>Euclidean distance</b> on normalised vectors to retrieve the best historical model.
+            </p>
+        </div>
+
+        <!-- 12. Research Methodology -->
+        <div class="sec">
+            <div class="sec-num">12</div>
+            <h2>Research Methodology</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Activity</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Dataset Collection</td>
+                    <td>5 benchmark datasets: Iris, Housing, Air Quality, Heart Disease, Customer Segmentation</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Pipeline Execution</td>
+                    <td>Full autonomous pipeline run on each dataset</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Model Benchmarking</td>
+                    <td>All candidate models evaluated; metrics logged per dataset</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Validation</td>
+                    <td>K-Fold Cross Validation (k=3) during hyperparameter search</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Comparison Study</td>
+                    <td>A²ML vs manual ML workflow vs single baseline model</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Result Analysis</td>
+                    <td>Accuracy, F1, RMSE compared across configurations</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 13. Experimental Design -->
+        <div class="sec">
+            <div class="sec-num">13</div>
+            <h2>Experimental Design</h2>
+        </div>
+
+        <div class="g2">
+            <div class="teal-box">
+                <h4>Exp 1 — Pipeline vs Baseline</h4>
+                <p>Dataset: <code>iris.csv</code> (Classification)<br>
+                    Compare A²ML full pipeline F1 vs single Random Forest F1 with no preprocessing.</p>
+            </div>
+            <div class="teal-box">
+                <h4>Exp 2 — Feature Engineering Effect</h4>
+                <p>Dataset: <code>air_quality.csv</code> (Regression)<br>
+                    Compare RMSE across: none / mutual_info / interactions / PCA strategies.</p>
+            </div>
+            <div class="teal-box">
+                <h4>Exp 3 — Knowledge Memory Effect</h4>
+                <p>Run Iris → then Heart Disease. Verify the memory system correctly recommends a model based on
+                    Euclidean similarity of the metadata vectors.</p>
+            </div>
+            <div class="teal-box">
+                <h4>Exp 4 — Ablation Study ⭐</h4>
+                <p>Sequential component removal (Preprocessing vs Feature Eng) to isolate performance gains on
+                    <code>heart_disease.csv</code>.</p>
+            </div>
+            <div class="teal-box">
+                <h4>Exp 5 — Statistical Significance ⭐</h4>
+                <p>T-test (p < 0.05) comparing automated pipeline performance vs baseline across multiple randomized
+                        folds to prove academic validity.</p>
+            </div>
+        </div>
+
+        <!-- 13b. Comparative Study -->
+        <div class="sec">
+            <div class="sec-num">13b</div>
+            <h2>Comparative Study with State-of-the-Art</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>A²ML (This Project)</th>
+                    <th>AutoSklearn / TPOT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Execution Speed</td>
+                    <td>Fast (Direct policy based)</td>
+                    <td>Slow (Optimization/Genetic loops)</td>
+                </tr>
+                <tr>
+                    <td>Complexity Score</td>
+                    <td>Explicit (Feature Density formula)</td>
+                    <td>Implicit/None</td>
+                </tr>
+                <tr>
+                    <td>Interpretability</td>
+                    <td>High (SHAP + PDP built-in)</td>
+                    <td>Variable/Post-hoc</td>
+                </tr>
+                <tr>
+                    <td>Memory System</td>
+                    <td>Adaptive Euclidean Knowledge Base</td>
+                    <td>Persistence-based only</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 14. Research Contributions -->
+        <div class="sec">
+            <div class="sec-num">14</div>
+            <h2>Research Contributions</h2>
+        </div>
+        <div class="g2">
+            <div class="card">
+                <h3>1. Dataset-Aware Preprocessing Framework</h3>
+                <p>Preprocessing decisions are driven by statistical properties of the input dataset — not hardcoded
+                    rules — enabling generalisation across diverse data distributions.</p>
+            </div>
+            <div class="card">
+                <h3>2. Automated Model Selection Strategy</h3>
+                <p>Multi-model training with automated selection based on problem-type-specific metrics (RMSE / F1 /
+                    Silhouette), eliminating subjective human judgment from model choice.</p>
+            </div>
+            <div class="card">
+                <h3>3. Adaptive Feature Engineering Pipeline</h3>
+                <p>Strategy selection (PCA / MI / Interactions) is determined programmatically from dataset shape
+                    characteristics without requiring user expertise.</p>
+            </div>
+            <div class="card">
+                <h3>4. Euclidean-Distance Knowledge Memory</h3>
+                <p>The system learns from previous executions, using Euclidean distance on normalised metadata vectors
+                    to recommend models for future similar datasets.</p>
+            </div>
+            <div class="card">
+                <h3>5. Explainable ML Pipeline</h3>
+                <p>SHAP values and Partial Dependence Plots provide dual-layer model transparency — both overall feature
+                    magnitude and directional effect on predictions.</p>
+            </div>
+            <div class="card">
+                <h3>6. Complexity Score Formula</h3>
+                <p>A defined numeric complexity metric (feature density + missing ratio + skewness) enables reproducible
+                    dataset characterisation for future research.</p>
+            </div>
+        </div>
+
+        <!-- 15. Final Structure -->
+        <div class="sec">
+            <div class="sec-num">15</div>
+            <h2>Final Project Structure</h2>
+        </div>
+        <div class="card">
+            <pre
+                style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#94a3b8;line-height:1.9;overflow-x:auto">
+A2ML/
+├── main.py                            ← CLI entry point
+├── app.py                             ← Streamlit dashboard entry
+├── requirements.txt
+├── knowledge_memory.json              ← Adaptive memory store (auto-generated)
+├── A2ML_Project_Report.html           ← This document
+├── README.md                          ← Project documentation
+│
+├── config/
+│   └── config.yaml                    ← System configuration
+│
+├── data/
+│   ├── iris.csv                       ← Classification (150 rows, 4 features)
+│   ├── housing.csv                    ← Regression (20k rows, 8 features)
+│   ├── air_quality.csv                ← Regression (400 rows, 7 features)
+│   ├── heart_disease.csv              ← Classification (303 rows, 11 features)
+│   └── customer_segmentation.csv      ← Clustering (500 rows, 6 features)
+│
+├── src/
+│   ├── engine/
+│   │   ├── data_input.py              ← CSV loading + problem type detection
+│   │   ├── meta_learning.py           ← Dataset statistics + complexity score
+│   │   ├── preprocessing.py           ← Decision-policy adaptive preprocessing
+│   │   ├── feature_opt.py             ← PCA / MI / Polynomial interactions
+│   │   ├── model_training.py          ← 13 model instantiation
+│   │   ├── hyperparameter.py          ← GridSearchCV
+│   │   ├── evaluation.py              ← Model benchmarking + auto-selection
+│   │   ├── explainability.py          ← SHAP + PDP
+│   │   ├── knowledge_memory.py        ← Euclidean similarity memory
+│   │   └── pipeline.py               ← Master orchestrator
+│   │
+│   ├── ui/
+│   │   ├── dashboard.py               ← Streamlit dashboard
+│   │   ├── ml_knowledge.py            ← Educational knowledge base
+│   │   └── style.css                  ← Premium UI styling
+│   │
+│   └── utils/
+│       └── logger.py                  ← Logging utility
+│
+├── experiments/
+│   ├── exp1_pipeline_vs_baseline.py
+│   ├── exp2_feature_engineering.py
+│   ├── exp3_knowledge_memory.py
+│   └── exp4_ablation_study.py         ← Ablation study
+│
+└── logs/                              ← Runtime logs (auto-generated)
+    </pre>
+        </div>
+
+        <!-- 16. Engineering Architecture -->
+        <div class="sec">
+            <div class="sec-num">16</div>
+            <h2>Engineering Rigor & Production Realism</h2>
+        </div>
+        <div class="g2">
+            <div class="teal-box">
+                <h4>📂 Configuration System</h4>
+                <p>Central <code>config.yaml</code> controls all pipeline hyperparameters, test ratios, and complexity
+                    weights without code changes.</p>
+            </div>
+            <div class="teal-box">
+                <h4>💾 Model Persistence</h4>
+                <p>Automatic <code>joblib</code> dumping of the <b>Auto-Selected Best Model</b> to
+                    <code>logs/best_model.pkl</code> for production deployment.</p>
+            </div>
+            <div class="teal-box">
+                <h4>📝 Detailed Logging</h4>
+                <p>Multi-level logging to <code>logs/a2ml_YYYYMMDD.log</code> capturing precision execution timestamps
+                    and internal engine state.</p>
+            </div>
+            <div class="teal-box">
+                <h4>⏳ Overfitting Control</h4>
+                <p>Composite selection score penalizes models with large train-test gaps:
+                    <code>final = score - (0.5 * overfit) - (0.01 * time)</code>.</p>
+            </div>
+        </div>
+
+        <!-- 17. Error & Performance Analysis -->
+        <div class="sec">
+            <div class="sec-num">17</div>
+            <h2>Error Analysis & Time Complexity</h2>
+        </div>
+        <div class="card">
+            <h3>🔍 Error Handling & Fallbacks</h3>
+            <ul>
+                <li><strong>Small Datasets:</strong> Automatically disables hyperparameter optimization if rows < 15 to
+                        prevent CV fold failure.</li>
+                <li><strong>Missing Values:</strong> Policy fallbacks from KNN to Simple Mean if feature variance is too
+                    low for computation.</li>
+                <li><strong>XAI Failure:</strong> SHAP KernelExplainer sampled subsetting to prevent memory overflow on
+                    wide datasets.</li>
+            </ul>
+            <h3>⏱️ Time Complexity Analysis</h3>
+            <p>Overall training complexity is <code>O(M × (N_train + CV_loops))</code> where M is model count. Inference
+                is <code>O(1)</code> for most selectors, keeping it deployment-ready.</p>
+        </div>
+
+        <!-- 18. Limitations -->
+        <div class="sec">
+            <div class="sec-num">18</div>
+            <h2>System Limitations</h2>
+        </div>
+        <div class="card">
+            <ul>
+                <li>Supports <strong>tabular (CSV) data only</strong> — no image, audio, or text support</li>
+                <li>Meta-learning capability is limited to Euclidean-distance-based recommendation (no deep
+                    meta-features)</li>
+                <li>Computational cost is high for very large datasets (&gt;100k rows)</li>
+                <li>Result quality is dependent on the quality of the input dataset</li>
+                <li>XGBoost on macOS requires installation of the <code>libomp</code> system library</li>
+            </ul>
+        </div>
+
+        <!-- 17. Future Extensions -->
+        <div class="sec">
+            <div class="sec-num">17</div>
+            <h2>Future Extensions</h2>
+        </div>
+        <div class="g2">
+            <div class="card">
+                <ul>
+                    <li>Deep learning integration (PyTorch / TensorFlow)</li>
+                    <li>NLP pipeline support (TF-IDF, transformers)</li>
+                    <li>AutoML ensembling (model stacking)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <ul>
+                    <li>Cloud deployment (Docker + AWS/GCP)</li>
+                    <li>Data drift monitoring</li>
+                    <li>What-If scenario analysis in dashboard</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 18. How to Run -->
+        <div class="sec">
+            <div class="sec-num">18</div>
+            <h2>How to Run</h2>
+        </div>
+        <div class="card">
+            <h3>⚡ CLI</h3>
+            <div class="code-box">
+                # Classification<br>
+                python main.py --dataset data/iris.csv --target target<br><br>
+                # Regression<br>
+                python main.py --dataset data/housing.csv --target target<br><br>
+                # Clustering (no target)<br>
+                python main.py --dataset data/customer_segmentation.csv<br><br>
+                # Custom feature strategy, skip hyperopt<br>
+                python main.py --dataset data/air_quality.csv --target pm25 --strategy mutual_info --no-hyperopt
+            </div>
+        </div>
+        <div class="card">
+            <h3>🌐 Dashboard</h3>
+            <div class="code-box">
+                source venv/bin/activate<br>
+                streamlit run app.py<br>
+                # → Open http://localhost:8501
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <strong>A²ML — Adaptive Dataset-Aware AutoML Pipeline</strong> &nbsp;·&nbsp;
+        Final Project Report &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp;
+        Python · scikit-learn · XGBoost · SHAP · Streamlit
+    </footer>
+
+</body>
+
+</html>

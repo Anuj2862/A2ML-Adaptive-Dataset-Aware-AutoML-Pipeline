@@ -1,0 +1,34 @@
+# A²ML System Configuration
+# Edit this file to customise default pipeline behaviour.
+
+pipeline:
+  test_size: 0.2
+  random_state: 42
+  cross_validation_folds: 3
+  apply_hyperopt_default: true
+  feature_strategy_default: "auto"
+
+memory:
+  file_path: "knowledge_memory.json"
+  similarity_threshold: 0.5     # Euclidean distance threshold for matching
+
+complexity_score:
+  # Weights must sum to 1.0
+  weight_feature_density: 0.4   # num_features / num_samples
+  weight_missing_ratio:   0.3
+  weight_skewness:        0.3
+
+feature_engineering:
+  max_interaction_features: 5   # Max columns to use for polynomial interactions
+  pca_n_components: 10          # Max PCA components
+  high_dim_threshold: 20        # Columns above this threshold → PCA
+
+models:
+  regression:
+    include_xgboost: true
+  classification:
+    include_xgboost: true
+
+logging:
+  level: "INFO"
+  log_dir: "logs/"
